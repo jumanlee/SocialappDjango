@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    'chat',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,8 +58,6 @@ ROOT_URLCONF = 'Socialapp.urls'
 #currently the react project is at the same level as the Django project's root directory
 react_base_dir = os.path.dirname(os.path.dirname(os.path.abspath(os.path.join(os.path.dirname(__file__), './'))))
 
-print(os.path.join(react_base_dir, 'frontend/build'))
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -76,6 +77,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Socialapp.wsgi.application'
+ASGI_APPLICATION = 'Socialapp.routing.application'
+
+ALLOWED_HOST = [
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Database
