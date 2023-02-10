@@ -79,7 +79,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Socialapp.wsgi.application'
 ASGI_APPLICATION = 'Socialapp.routing.application'
 
-ALLOWED_HOST = [
+ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
 ]
@@ -134,6 +134,20 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#For react
 STATICFILES_DIRS = [
     os.path.join(react_base_dir, 'frontend/build/static'),
 ]
+
+CHANNEL_LAYERS = {
+    # a python dict of a configuration for using Redis as a kind of message board essentially it's going to hold all of the data that is all of the messages for each of the rooms. So we're just saying that we're going to use the channel's Redis package that we installed much earlier. And the configuration here, we're going to find Redis at local host, the local IP address and it's going to be running on its default port number 6379, so that when we come to update the app will have to start Redis.
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)]
+
+        },
+
+    },
+
+}
