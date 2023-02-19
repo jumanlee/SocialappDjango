@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'channels',
     'chat',
+    'rest_framework',
+    'corsheaders',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -151,3 +153,22 @@ CHANNEL_LAYERS = {
     },
 
 }
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+# Permissions:
+# AllowAny
+# IsAuthenticated
+# IsAdminUser
+# IsAuthenticatedOrReadOnly
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+]
